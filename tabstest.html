@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Phishing Quiz</title>
+	<meta name="description" content="Quiz Page for CSE 4471 OSU Information Security">
+	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="./bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+	<link href="./bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+	<script>
+		var totalScore = 0;
+		$(function() {
+			$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+			$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+		});
+		 $(function() {
+			$( "#progressbar" ).progressbar({value: 2});
+		});
+		
+		function correctChoice(num) {
+			//alert("Correct!");
+			var id = "answers" + num;
+			document.getElementById(id).innerHTML = "Correct!";
+			totalScore = totalScore + 1;
+			document.getElementById("score").innerHTML = totalScore;
+		}
+		
+		function wrongChoice(num) {
+			//alert("Incorrect, you just got phished.");
+			var id = "answers" + num;
+			document.getElementById(id).innerHTML = "Incorrect :(.";
+		}
+	</script>
+	<style type="text/css">
+		body {
+			font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+		}
+		
+		/* for vertical tabs: */
+		.ui-tabs-vertical { width: 55em; }
+		.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+		.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+		.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+		.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+		.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+		
+		/* For progress bar: */
+		 .ui-progressbar {
+			position: relative;
+		}
+		.progress-label {
+			position: absolute;
+			left: 50%;
+			top: 4px;
+			font-weight: bold;
+			text-shadow: 1px 1px 0 #fff;
+		}
+	</style>
+</head>
+<body>
+	<h1>Phishing Test</h1>
+	<hr>
+	<div id="scorePane">
+		<p>Score (Amount correct) = <span id="score">0</span></p>
+	</div>
+	<div id="progressbar"><div class="progress-label">Progress</div></div></br>
+	<div id="tabs">
+		<ul>
+		<li><a href="#tabs-1">Question 1</a></li>
+		<li><a href="#tabs-2">Question 2</a></li>
+		<li><a href="#tabs-3">Question 3</a></li>
+		<li><a href="#tabs-4">Question 4</a></li>
+		</ul>
+		<div id="tabs-1">
+			<h2>Question 1</h2>
+			<p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1)">Real</button>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(1)">Phishing</button>
+				<p id="answers1"></p>
+			<img src="./email1.jpg" class="img-responsive" alt="email1">
+			</p>
+		</div>
+		<div id="tabs-2">
+			<h2>Question 2</h2>
+			<p>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(2)">Real</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(2)">Phishing</button>
+				<p id="answers2"></p>
+			<img src="./email2.jpg" class="img-responsive" alt="Wells Fargo Email">
+			</p>
+		</div>
+		<div id="tabs-3">
+			<h2>Question 3</h2>
+			<p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(3)">Real</button>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(3)">Phishing</button>
+				<p id="answers3"></p>
+			<img src="./email3.jpg" class="img-responsive" alt="IRS form">
+			</p>
+		</div>
+		<div id="tabs-4">
+			<h2>Question 4</h2>
+			 <p>Which one of these passwords is NOT one of the top 25 most used password? (according to CBS News)</p>
+			<p><button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">12345678</button></br>
+			<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">qwerty</button></br>
+			<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4)">bologna1</button></br>
+			<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">admin</button></br>
+			<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">photoshop</button>
+			<p id="answers4"></p>
+			</p>
+		</div>
+	</div>
+</body>
+</html>
