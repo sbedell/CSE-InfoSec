@@ -11,15 +11,23 @@
 	<script src="./bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 	<link href="./bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
 	<script>
+		// Global Variable:
 		var totalScore = 0;
+		
 		$(function() {
 			$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
 			$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 		});
-		 $(function() {
-			$( "#progressbar" ).progressbar({value: 2});
-		});
 		
+		$(function() {
+			$( "#progressbar" ).progressbar({value: 2});
+		
+			function progress() {
+				var val = progressbar.progressbar("value") || 0;
+				progressbar.progressbar("value", val + 1 );
+			}
+		});
+				
 		function correctChoice(num) {
 			//alert("Correct!");
 			var id = "answers" + num;
@@ -37,6 +45,7 @@
 	<style type="text/css">
 		body {
 			font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+			margin: 25px;
 		}
 		
 		/* for vertical tabs: */
@@ -63,54 +72,59 @@
 <body>
 	<h1>Phishing Test</h1>
 	<hr>
-	<div id="scorePane">
-		<p>Score (Amount correct) = <span id="score">0</span></p>
-	</div>
-	<div id="progressbar"><div class="progress-label">Progress</div></div></br>
-	<div id="tabs">
-		<ul>
-		<li><a href="#tabs-1">Question 1</a></li>
-		<li><a href="#tabs-2">Question 2</a></li>
-		<li><a href="#tabs-3">Question 3</a></li>
-		<li><a href="#tabs-4">Question 4</a></li>
-		</ul>
-		<div id="tabs-1">
-			<h2>Question 1</h2>
-			<p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1)">Real</button>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(1)">Phishing</button>
-				<p id="answers1"></p>
-			<img src="./email1.jpg" class="img-responsive" alt="email1">
-			</p>
+	<div class="container-fluid">
+		<div id="scorePane">
+			<p>Score (Amount correct) = <span id="score">0</span></p>
 		</div>
-		<div id="tabs-2">
-			<h2>Question 2</h2>
-			<p>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(2)">Real</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(2)">Phishing</button>
-				<p id="answers2"></p>
-			<img src="./email2.jpg" class="img-responsive" alt="Wells Fargo Email">
-			</p>
-		</div>
-		<div id="tabs-3">
-			<h2>Question 3</h2>
-			<p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(3)">Real</button>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(3)">Phishing</button>
-				<p id="answers3"></p>
-			<img src="./email3.jpg" class="img-responsive" alt="IRS form">
-			</p>
-		</div>
-		<div id="tabs-4">
-			<h2>Question 4</h2>
-			 <p>Which one of these passwords is NOT one of the top 25 most used password? (according to CBS News)</p>
-			<p><button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">12345678</button></br>
-			<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">qwerty</button></br>
-			<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4)">bologna1</button></br>
-			<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">admin</button></br>
-			<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">photoshop</button>
-			<p id="answers4"></p>
-			</p>
+		<div id="progressbar"><div class="progress-label">Progress</div></div></br>
+		<div id="tabs">
+			<ul>
+			<li><a href="#tabs-1">Question 1</a></li>
+			<li><a href="#tabs-2">Question 2</a></li>
+			<li><a href="#tabs-3">Question 3</a></li>
+			<li><a href="#tabs-4">Question 4</a></li>
+			<li><a href="#tabs-5">Question 5</a></li>
+			</ul>
+			<div id="tabs-1" class="col-sm-2">
+				<h2>Question 1</h2>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1)">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(1)">Phishing</button>
+					<p id="answers1"></p>
+				<img src="./email1.jpg" class="img-responsive" alt="email1">
+				</p>
+			</div>
+			<div id="tabs-2" class="col-sm-2">
+				<h2>Question 2</h2>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(2)">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(2)">Phishing</button>
+					<p id="answers2"></p>
+				<img src="./email2.jpg" class="img-responsive" alt="Wells Fargo Email">
+				</p>
+			</div>
+			<div id="tabs-3">
+				<h2>Question 3</h2>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(3)">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(3)">Phishing</button>
+					<p id="answers3"></p>
+				<img src="./email3.jpg" class="img-responsive" alt="IRS form">
+				</p>
+			</div>
+			<div id="tabs-4">
+				<h2>Question 4</h2>
+				 <p>Which one of these passwords is NOT one of the top 25 most used password? (according to CBS News)</p>
+				<p><button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">12345678</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">qwerty</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4)">bologna1</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">admin</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">photoshop</button>
+				<p id="answers4"></p>
+				</p>
+			</div>
+			<div id="tabs-5">
+			</div>
 		</div>
 	</div>
 </body>
