@@ -4,42 +4,63 @@
 	<meta charset="utf-8">
 	<title>Phishing Quiz</title>
 	<meta name="description" content="Quiz Page for CSE 4471 OSU Information Security">
-	
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="./bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-	<link href="./bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./bootstrap-3.1.1-dist/css/bootstrap.min.css">
 	<script>
 		// Global Variable:
 		var totalScore = 0;
 		
+		// Tabs functionality:
 		$(function() {
-			$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-			$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+			$("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+			$("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
 		});
 		
+		// Progress bar functionality:
 		$(function() {
-			$( "#progressbar" ).progressbar({value: 2});
-		
+			var progressbar = $("#progressbar"), progressLabel = $(".progress-label");
+			
+			progressbar.progressbar({
+				value: 0,
+				change: function() {
+					progressLabel.text(progressbar.progressbar("value") + "%");
+				},
+				complete: function() {
+					progressLabel.text( "Complete!" );
+				}
+			});
+			
 			function progress() {
-				var val = progressbar.progressbar("value") || 0;
-				progressbar.progressbar("value", val + 1 );
+				var val = progressbar.progressbar( "value" ) || 0;
+				progressbar.progressbar( "value", val + 1 );
 			}
 		});
-				
+	
 		function correctChoice(num) {
-			//alert("Correct!");
 			var id = "answers" + num;
 			document.getElementById(id).innerHTML = "Correct!";
-			totalScore = totalScore + 1;
+			
+			// Increase score by 1:
 			document.getElementById("score").innerHTML = totalScore;
+			totalScore = totalScore + 1;
+			
+			// Update progress bar (increase by 10):
+			var progressbar = $("#progressbar");
+			var val = progressbar.progressbar("value");
+			progressbar.progressbar("value", val + 10); 
 		}
 		
 		function wrongChoice(num) {
-			//alert("Incorrect, you just got phished.");
 			var id = "answers" + num;
 			document.getElementById(id).innerHTML = "Incorrect :(.";
+			
+			// Update progress bar (increase by 10):
+			var progressbar = $("#progressbar");
+			var val = progressbar.progressbar("value");
+			progressbar.progressbar("value", val - 10); 
 		}
 	</script>
 	<style type="text/css">
@@ -84,6 +105,11 @@
 			<li><a href="#tabs-3">Question 3</a></li>
 			<li><a href="#tabs-4">Question 4</a></li>
 			<li><a href="#tabs-5">Question 5</a></li>
+			<li><a href="#tabs-6">Question 6</a></li>
+			<li><a href="#tabs-7">Question 7</a></li>
+			<li><a href="#tabs-8">Question 8</a></li>
+			<li><a href="#tabs-9">Question 9</a></li>
+			<li><a href="#tabs-10">Question 10</a></li>
 			</ul>
 			<div id="tabs-1" class="col-sm-2">
 				<h2>Question 1</h2>
@@ -124,6 +150,28 @@
 				</p>
 			</div>
 			<div id="tabs-5">
+				<h2>Question 5</h2>
+				<p>test test test test</p>
+			</div>
+			<div id="tabs-6">
+				<h2>Question 6</h2>
+				<p>test test test test</p>
+			</div>
+			<div id="tabs-7">
+				<h2>Question 7</h2>
+				<p>test test test test</p>
+			</div>
+			<div id="tabs-8">
+				<h2>Question 8</h2>
+				<p>test test test test</p>
+			</div>
+			<div id="tabs-9">
+				<h2>Question 9</h2>
+				<p>test test test test</p>
+			</div>
+			<div id="tabs-10">
+				<h2>Question 10</h2>
+				<p>test test test test</p>
 			</div>
 		</div>
 	</div>
