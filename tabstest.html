@@ -29,14 +29,9 @@
 					progressLabel.text(progressbar.progressbar("value") + "%");
 				},
 				complete: function() {
-					progressLabel.text( "Complete!" );
+					progressLabel.text("Complete!");
 				}
 			});
-			
-			function progress() {
-				var val = progressbar.progressbar( "value" ) || 0;
-				progressbar.progressbar( "value", val + 1 );
-			}
 		});
 	
 		function correctChoice(num) {
@@ -44,23 +39,21 @@
 			document.getElementById(id).innerHTML = "Correct!";
 			
 			// Increase score by 1:
-			document.getElementById("score").innerHTML = totalScore;
 			totalScore = totalScore + 1;
+			document.getElementById("score").innerHTML = totalScore;
 			
 			// Update progress bar (increase by 10):
 			var progressbar = $("#progressbar");
 			var val = progressbar.progressbar("value");
-			progressbar.progressbar("value", val + 10); 
+			progressbar.progressbar("value", val + 10);
 		}
 		
 		function wrongChoice(num) {
 			var id = "answers" + num;
 			document.getElementById(id).innerHTML = "Incorrect :(.";
 			
-			// Update progress bar (increase by 10):
-			var progressbar = $("#progressbar");
-			var val = progressbar.progressbar("value");
-			progressbar.progressbar("value", val - 10); 
+			totalScore = totalScore - 1;
+			document.getElementById("score").innerHTML = totalScore;
 		}
 	</script>
 	<style type="text/css">
@@ -95,7 +88,7 @@
 	<hr>
 	<div class="container-fluid">
 		<div id="scorePane">
-			<p>Score (Amount correct) = <span id="score">0</span></p>
+			<p>Score = <span id="score">0</span></p>
 		</div>
 		<div id="progressbar"><div class="progress-label">Progress</div></div></br>
 		<div id="tabs">
@@ -114,64 +107,92 @@
 			<div id="tabs-1" class="col-sm-2">
 				<h2>Question 1</h2>
 				<p>
-					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1)">Real</button>
-					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(1)">Phishing</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(1); this.disabled=true;">Phishing</button>
 					<p id="answers1"></p>
-				<img src="./email1.jpg" class="img-responsive" alt="email1">
+					<img src="./email1.jpg" class="img-responsive" alt="email1">
 				</p>
 			</div>
 			<div id="tabs-2" class="col-sm-2">
 				<h2>Question 2</h2>
 				<p>
-					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(2)">Real</button>
-					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(2)">Phishing</button>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(2); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(2); this.disabled=true;">Phishing</button>
 					<p id="answers2"></p>
-				<img src="./email2.jpg" class="img-responsive" alt="Wells Fargo Email">
+					<img src="./email2.jpg" class="img-responsive" alt="Wells Fargo Email">
 				</p>
 			</div>
 			<div id="tabs-3">
 				<h2>Question 3</h2>
 				<p>
-					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(3)">Real</button>
-					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(3)">Phishing</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(3); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(3); this.disabled=true;">Phishing</button>
 					<p id="answers3"></p>
-				<img src="./email3.jpg" class="img-responsive" alt="IRS form">
+					<img src="./email3.jpg" class="img-responsive" alt="IRS form">
 				</p>
 			</div>
 			<div id="tabs-4">
 				<h2>Question 4</h2>
-				 <p>Which one of these passwords is NOT one of the top 25 most used password? (according to CBS News)</p>
-				<p><button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">12345678</button></br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">qwerty</button></br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4)">bologna1</button></br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">admin</button></br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4)">photoshop</button>
+				<p>Which one of these passwords is NOT one of the top 25 most used password? (according to CBS News)</p>
+				<p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4); this.disabled=true;">12345678</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">qwerty</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4);this.disabled=true;">bologna1</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">admin</button></br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">photoshop</button>
 				<p id="answers4"></p>
 				</p>
 			</div>
 			<div id="tabs-5">
 				<h2>Question 5</h2>
-				<p>test test test test</p>
+				<p>
+					<p>Which one of these links is a valid, non cross site scripting link? This is incomplete.</p>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(5);this.disabled=true;">&lt;IMG SRC=# onmouseover="alert('lololol')"&gt;</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">&lt;IFRAME SRC="javascript:alert('XSS');"&gt;&lt;/IFRAME&gt;</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">Phishing</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">Phishing</button>
+					<p id="answers5"></p>
+				</p>
 			</div>
 			<div id="tabs-6">
 				<h2>Question 6</h2>
-				<p>test test test test</p>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(6); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">Phishing</button>
+					<p id="answers6"></p>
+				</p>
 			</div>
 			<div id="tabs-7">
 				<h2>Question 7</h2>
-				<p>test test test test</p>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(7); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7); this.disabled=true;">Phishing</button>
+					<p id="answers7"></p>
+				</p>
 			</div>
 			<div id="tabs-8">
 				<h2>Question 8</h2>
-				<p>test test test test</p>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(8); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8); this.disabled=true;">Phishing</button>
+					<p id="answers8"></p>
+				</p>
 			</div>
 			<div id="tabs-9">
 				<h2>Question 9</h2>
-				<p>test test test test</p>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(9); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Phishing</button>
+					<p id="answers9"></p>
+				</p>
 			</div>
 			<div id="tabs-10">
 				<h2>Question 10</h2>
-				<p>test test test test</p>
+				<p>
+					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(10); this.disabled=true;">Real</button>
+					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(10); this.disabled=true;">Phishing</button>
+					<p id="answers10"></p>
+				</p>
 			</div>
 		</div>
 	</div>
