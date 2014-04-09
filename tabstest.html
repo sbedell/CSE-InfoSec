@@ -5,11 +5,12 @@
 	<title>Security Quiz - CSE 4471 OSU</title>
 	<meta name="description" content="Quiz Page for CSE 4471 OSU Information Security">
 	<meta name="keywords" content="OSU, Ohio State, Ohio State University, CSE, Computer Science, Information Security, Infosec">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<script src="../bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="../bootstrap-3.1.1-dist/css/bootstrap.min.css">
+	<script src="./bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./bootstrap-3.1.1-dist/css/bootstrap.min.css">
 	<script>
 		// Global Variable:
 		var totalScore = 0;
@@ -60,7 +61,6 @@
 	<style type="text/css">
 		body {
 			font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
-			margin: 25px;
 		}
 		
 		/* for vertical tabs: */
@@ -85,12 +85,9 @@
 	</style>
 </head>
 <body>
-	<h1>Information Security Awareness Quiz</h1>
-	<hr>
 	<div class="container-fluid">
-		<div id="scorePane">
-			<p>Score = <span id="score">0</span></p>
-		</div>
+		<h1>Information Security Awareness Quiz</h1><hr>
+		<div>Score = <span id="score">0</span></div>
 		<div id="progressbar"><div class="progress-label">Progress</div></div><br>
 		<div id="tabs">
 			<ul>
@@ -105,7 +102,7 @@
 			<li><a href="#tabs-9">Question 9</a></li>
 			<li><a href="#tabs-10">Question 10</a></li>
 			</ul>
-			<div id="tabs-1" class="col-sm-2">
+			<div id="tabs-1" class="row">
 				<h2>Question 1</h2>
 				<div>
 					<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1);this.disabled=true;">Real</button>
@@ -114,7 +111,7 @@
 					<img src="./email1.jpg" class="img-responsive" alt="email1">
 				</div>
 			</div>
-			<div id="tabs-2" class="col-sm-2">
+			<div id="tabs-2">
 				<h2>Question 2</h2>
 				<div>
 					<button type="button" class="btn btn-default btn-info" onclick="correctChoice(2); this.disabled=true;">Real</button>
