@@ -64,16 +64,24 @@
 		}
 		
 		/* for vertical tabs: */
-		.ui-tabs-vertical { width: 55em; }
+		.ui-tabs-vertical { width: 90%; } 
 		.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
 		.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
 		.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
 		.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-		.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+		.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 70%;}
+		
+		#tabs {
+			margin-left:auto;
+			margin-right:auto;
+		}
 		
 		/* For progress bar: */
 		 .ui-progressbar {
 			position: relative;
+			width: 90%;
+			margin-left:auto;
+			margin-right:auto;
 		}
 		.progress-label {
 			position: absolute;
@@ -82,12 +90,14 @@
 			font-weight: bold;
 			text-shadow: 1px 1px 0 #fff;
 		}
+		
+		h1 { text-align:center; }
 	</style>
 </head>
 <body>
 	<div class="container-fluid">
 		<h1>Information Security Awareness Quiz</h1><hr>
-		<div>Score = <span id="score">0</span></div>
+		<div class="ui-progressbar">Score = <span id="score">0</span></div>
 		<div id="progressbar"><div class="progress-label">Progress</div></div><br>
 		<div id="tabs" class="container-fluid">
 			<ul>
@@ -96,8 +106,10 @@
 			<li><a href="#tabs-2">Question 2</a></li>
 			<li><a href="#tabs-3">Question 3</a></li>
 			<li><a href="#tabs-4">Question 4</a></li>
+			<li><a href="#tabs-pw">Secure Passwords</a></li>
 			<li><a href="#tabs-5">Question 5</a></li>
 			<li><a href="#tabs-6">Question 6</a></li>
+			<li><a href="#tabs-var">Various Topics</a></li>
 			<li><a href="#tabs-7">Question 7</a></li>
 			<li><a href="#tabs-8">Question 8</a></li>
 			<li><a href="#tabs-9">Question 9</a></li>
@@ -105,113 +117,135 @@
 			</ul>
 			<div id="tabs-phish" class="row">
 				<h2>Phishing Information</h2>
-				<p>Phishing is the act of masquerading as a trustworthy entity in electronic communications and attempting to acquire sensitive information. Attackers commonly pretend to be from organizations such as a bank, online payment processors, social media sites, or even an IT department.
-				Phishing attempts are a means to accomplish various goals of an attacker, the results of which can include identity theft, convincing victims to download malicious software, or even to perpetuate the attack to the victim's contacts. There are many effective ways to identify a phishing attack before falling victim to it:
-				Does the sender's domain match the entity from which they claim to be?
-				Do links use encryption? (https://)
-				Does the email seem unprofessional?
-				bad grammar
-				bad spelling
-				plain text
-				no company logos
-				message body is an image
-				Does the sender request personal information?
-				it is likely that a legitimate organization already has this info
-				</p>
+				<p>Phishing is the act of masquerading as a trustworthy entity in electronic communications and attempting to acquire sensitive information. Attackers commonly pretend to be from organizations such as a bank, online payment processors, social media sites, or even an IT department.</p>
+				<p>Phishing attempts are a means to accomplish various goals of an attacker, the results of which can include identity theft, convincing victims to download malicious software, or even to perpetuate the attack to the victim's contacts. There are many effective ways to identify a phishing attack before falling victim to it:</p>
+				<ul><li>Does the sender's domain match the entity from which they claim to be?</li>
+				<li>Do links use encryption? (http<b>s</b>://)</li>
+				<li>Does the sender request personal information? It is likely that a legitimate organization already has this info</li>
+				<li>Does the email seem unprofessional?</li>
+					<ul><li>Spelling/grammar mistakes</li>
+							<li>Plain text</li>
+							<li>No company logo</li>
+							<li>message body is an image</li></ul>
+				</ul>
 			</div>
 			<div id="tabs-1" class="row">
 				<h2>Question 1</h2>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1);this.disabled=true;">Real</button>
 				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(1);this.disabled=true;">Phishing</button>
 				<p id="answers1"></p>
-				<img src="./email1.jpg" class="img-responsive" alt="email1">
+				<img src="./images/email1.jpg" class="img-responsive" alt="email1">
 			</div>
 			<div id="tabs-2" class="row">
 				<h2>Question 2</h2>
 				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(2); this.disabled=true;">Real</button>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(2); this.disabled=true;">Phishing</button>
 				<p id="answers2"></p>
-				<img src="./email2.jpg" class="img-responsive" alt="Wells Fargo Email">
+				<img src="./images/email2.jpg" class="img-responsive" alt="Wells Fargo Email">
 			</div>
 			<div id="tabs-3" class="row">
 				<h2>Question 3</h2>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(3); this.disabled=true;">Real</button>
 				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(3); this.disabled=true;">Phishing</button>
 				<p id="answers3"></p>
-				<img src="./email3.jpg" class="img-responsive" alt="IRS form">
+				<img src="./images/email3.jpg" class="img-responsive" alt="IRS form">
 			</div>
 			<div id="tabs-4" class="row">
 				<h2>Question 4</h2>
 				<p>Business executives and industry leaders are often targeted by which type of electronic attack.</p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4); this.disabled=true;">Drive-by Exploits</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4); this.disabled=true;">Search Engine Poisoning</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4); this.disabled=true;">Spear-phishing</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">All of the above</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">None of the above</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4); this.disabled=true;">Drive-by Exploits</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4); this.disabled=true;">Spear-phishing</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4); this.disabled=true;">Search Engine Poisoning</button><br><br>				
 				<p id="answers4"></p>
+			</div>
+			<div id="tabs-pw" class="row">
+				<h2>Secure Passwords</h2>
+				<p>Making a secure password is a very important part of ensuring data safety. Some main points to be considered in password security are:</p>
+				<ul>
+				<li>Length</li>
+				<li>Randomness</li>
+				<li>Avoiding dictionary terms</li>
+				<li>Avoiding proper nouns</li>
+				<li>Character variety</li>
+				<li>Passphrases</li>
+				</ul>
 			</div>
 			<div id="tabs-5" class="row">
 				<h2>Question 5</h2>
 				<p>Which one of these passwords is NOT one of the top 25 most used passwords? (according to CBS News)</p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">12345678</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">qwerty</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(5);this.disabled=true;">bologna1</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">admin</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">photoshop</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">All of the above</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">None of the above</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">12345678</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">qwerty</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(5);this.disabled=true;">bologna1</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">admin</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">photoshop</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">All of the above</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">None of the above</button><br><br>
 				<p id="answers5"></p>
 			</div>
 			<div id="tabs-6" class="row">
 				<h2>Question 6</h2>
 				<p>Which of these is the strongest password?</p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">V01d3m0R7</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">the quick brown fox jumped over the lazy dog</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">8bQ&f2L#</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(6); this.disabled=true;">bo0K$r4N3wBZ1oL</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">All of the above</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">None of the above</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">V01d3m0R7</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">the quick brown fox</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">8bQ&f2L#</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(6); this.disabled=true;">bo0K$r4N3wBZ1oL</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">All of the above</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">None of the above</button><br><br>
 				<p id="answers6"></p>
+			</div>
+			<div id="tabs-var" class="row">
+				<h2>Email Attachments</h2>
+				<p>Malicious email attachments are a popular way to distribute malware. When you get an email with an attachment, there are multiple points which you must first consider:</p>
+				<ul><li>Did this email come from a trusted source?</li>
+					<li>Were you expecting to receive a file from the sender?</li>
+					<li>What does the file extension correspond to?</li>
+					<ul><li>A ".exe" or ".pkg" could possibly install malicious software on your device.</li>
+						<li>A ".apk" file can install malicious software on an Android device if it is set to allow software from outside the app store.</li>
+						<li>A ".htm" file can contain malicious JavaScript that can redirect your browser to a malware-hosting site.</li>
+					</ul>
+				</ul>
+				<h2>Mobile Security</h2>
+				<h2>Cross Site Scripting</h2>
 			</div>
 			<div id="tabs-7" class="row">
 				<h2>Question 7</h2>
 				<p>Which one of these tags is a valid, non cross site scripting tag?</p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IMG SRC=# onmouseover="alert('aloha')"&gt;</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IFRAME SRC="javascript:alert('hello');"&gt;&lt;/IFRAME&gt;</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(7);this.disabled=true;">&lt;a href="http://www.google.com" onclick="this.disabled=true;"</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29&gt;</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">All of the above</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">None of the above</button>
+				<button type="button" class="btn btn-default btn-info" onmouseover="javascript:alert('aloha');" onclick="wrongChoice(7);this.disabled=true;">&lt;IMG SRC=# onmouseover="alert('aloha')"&gt;</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IFRAME SRC="javascript:alert('hello');"&gt;&lt;/IFRAME&gt;</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(7);this.disabled=true;">&lt;a href="http://www.google.com" onclick="this.disabled=true;"</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29&gt;</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">All of the above</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">None of the above</button><br><br>
 				<p id="answers7"></p>
 			</div>
 			<div id="tabs-8" class="row">
 				<h2>Question 8</h2>
 				<p>Which of these could be a malicious email attachment?</p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Secure-form.htm</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Resume.pdf</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Resume.doc</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Tiesto.mp3.js</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">FlightMH370.avi.apk</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(8);this.disabled=true;">All of the above</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">None of the above</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Secure-form.htm</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Resume.pdf</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Resume.doc</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">Tiesto.mp3.js</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">FlightMH370.avi.apk</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(8);this.disabled=true;">All of the above</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(8);this.disabled=true;">None of the above</button><br><br>
 				<p id="answers8"></p>
 			</div>
 			<div id="tabs-9" class="row">
 				<h2>Question 9</h2>
 				<p>Which of these permissions does Facebook Messenger for Android NOT request?</p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Record Audio</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Download files without notification</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Send SMS messages (costs money)</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(9); this.disabled=true;">Web Browser History</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Record Audio</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Download files without notification</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Send SMS messages (costs money)</button><br><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(9); this.disabled=true;">Web Browser History</button><br><br>
 				<p id="answers9"></p>
 			</div>
 			<div id="tabs-10" class="row">
 				<h2>Question 10</h2>
 				<p>And finally, do you know about the Heartbleed openSSL bug?</p>
 				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(10); this.disabled=true;">Yes</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(10); this.disabled=true;document.getElementById('answers10').innerHTML='You should read up! http://heartbleed.com/';">No</button>
-				<p id="answers10"></p>
-				<img src="./heartbleed.png" class="img-responsive" alt="HEARTBLEED01">
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(10); this.disabled=true;document.getElementById('answers10').innerHTML='You should read up! http://heartbleed.com/';">No</button><br><br>
+				<p id="answers10"></p><br>
+				<img src="./images/heartbleed.png" class="img-responsive" alt="HEARTBLEED">
 			</div>
 		</div>
 	</div>
