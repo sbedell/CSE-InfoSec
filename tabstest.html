@@ -91,6 +91,7 @@
 		<div id="progressbar"><div class="progress-label">Progress</div></div><br>
 		<div id="tabs" class="container-fluid">
 			<ul>
+			<li><a href="#tabs-phish">Phishing</a></li>
 			<li><a href="#tabs-1">Question 1</a></li>
 			<li><a href="#tabs-2">Question 2</a></li>
 			<li><a href="#tabs-3">Question 3</a></li>
@@ -102,6 +103,22 @@
 			<li><a href="#tabs-9">Question 9</a></li>
 			<li><a href="#tabs-10">Question 10</a></li>
 			</ul>
+			<div id="tabs-phish" class="row">
+				<h2>Phishing Information</h2>
+				<p>Phishing is the act of masquerading as a trustworthy entity in electronic communications and attempting to acquire sensitive information. Attackers commonly pretend to be from organizations such as a bank, online payment processors, social media sites, or even an IT department.
+				Phishing attempts are a means to accomplish various goals of an attacker, the results of which can include identity theft, convincing victims to download malicious software, or even to perpetuate the attack to the victim's contacts. There are many effective ways to identify a phishing attack before falling victim to it:
+				Does the sender's domain match the entity from which they claim to be?
+				Do links use encryption? (https://)
+				Does the email seem unprofessional?
+				bad grammar
+				bad spelling
+				plain text
+				no company logos
+				message body is an image
+				Does the sender request personal information?
+				it is likely that a legitimate organization already has this info
+				</p>
+			</div>
 			<div id="tabs-1" class="row">
 				<h2>Question 1</h2>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(1);this.disabled=true;">Real</button>
@@ -125,39 +142,46 @@
 			</div>
 			<div id="tabs-4" class="row">
 				<h2>Question 4</h2>
-				<p>Which one of these passwords is NOT one of the top 25 most used password? (according to CBS News)</p>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">12345678</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">qwerty</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4);this.disabled=true;">bologna1</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">admin</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">photoshop</button><br>
+				<p>Business executives and industry leaders are often targeted by which type of electronic attack.</p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4); this.disabled=true;">Drive-by Exploits</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4); this.disabled=true;">Search Engine Poisoning</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(4); this.disabled=true;">Spear-phishing</button><br>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">All of the above</button><br>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(4);this.disabled=true;">None of the above</button>
 				<p id="answers4"></p>
 			</div>
 			<div id="tabs-5" class="row">
 				<h2>Question 5</h2>
-				<p>Another password question</p>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(5); this.disabled=true;">Real</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5); this.disabled=true;">Phishing</button>
+				<p>Which one of these passwords is NOT one of the top 25 most used passwords? (according to CBS News)</p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">12345678</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">qwerty</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(5);this.disabled=true;">bologna1</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">admin</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">photoshop</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">All of the above</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(5);this.disabled=true;">None of the above</button>
 				<p id="answers5"></p>
 			</div>
 			<div id="tabs-6" class="row">
 				<h2>Question 6</h2>
-				<p>Which one of these links is a valid, non cross site scripting link? This is incomplete.</p>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(6);this.disabled=true;">&lt;IMG SRC=# onmouseover="alert('lololol')"&gt;</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">&lt;IFRAME SRC="javascript:alert('XSS');"&gt;&lt;/IFRAME&gt;</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">Phishing</button><br>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">Phishing</button><br>
+				<p>Which of these is the strongest password?</p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">V01d3m0R7</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">the quick brown fox jumped over the lazy dog</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6); this.disabled=true;">8bQ&f2L#</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(6); this.disabled=true;">bo0K$r4N3wBZ1oL</button><br>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">All of the above</button><br>
 				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(6);this.disabled=true;">None of the above</button>
 				<p id="answers6"></p>
 			</div>
 			<div id="tabs-7" class="row">
 				<h2>Question 7</h2>
-				<p>Another XSS question</p>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(7); this.disabled=true;">Real</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7); this.disabled=true;">Phishing</button>
+				<p>Which one of these tags is a valid, non cross site scripting tag?</p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IMG SRC=# onmouseover="alert('aloha')"&gt;</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IFRAME SRC="javascript:alert('hello');"&gt;&lt;/IFRAME&gt;</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(7);this.disabled=true;">&lt;a href="http://www.google.com" onclick="this.disabled=true;"</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">&lt;IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29&gt;</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">All of the above</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(7);this.disabled=true;">None of the above</button>
 				<p id="answers7"></p>
 			</div>
 			<div id="tabs-8" class="row">
@@ -174,16 +198,20 @@
 			</div>
 			<div id="tabs-9" class="row">
 				<h2>Question 9</h2>
-				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(9); this.disabled=true;">Real</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Phishing</button>
+				<p>Which of these permissions does Facebook Messenger for Android NOT request?</p>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Record Audio</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Download files without notification</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(9); this.disabled=true;">Send SMS messages (costs money)</button><br>
+				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(9); this.disabled=true;">Web Browser History</button>
 				<p id="answers9"></p>
 			</div>
 			<div id="tabs-10" class="row">
 				<h2>Question 10</h2>
 				<p>And finally, do you know about the Heartbleed openSSL bug?</p>
 				<button type="button" class="btn btn-default btn-info" onclick="correctChoice(10); this.disabled=true;">Yes</button>
-				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(10); this.disabled=true; document.getElementById('answers10').innerHTML = 'You should read up! http://heartbleed.com/';">No</button>
+				<button type="button" class="btn btn-default btn-info" onclick="wrongChoice(10); this.disabled=true;document.getElementById('answers10').innerHTML='You should read up! http://heartbleed.com/';">No</button>
 				<p id="answers10"></p>
+				<img src="./heartbleed.png" class="img-responsive" alt="HEARTBLEED01">
 			</div>
 		</div>
 	</div>
